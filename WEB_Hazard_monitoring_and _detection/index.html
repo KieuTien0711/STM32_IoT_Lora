@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Node Giám Sát</title>
+  
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <h2>Giám sát</h2>
+      <nav>
+        <a href="index.html" class="active">Trang chính</a>
+        <a href="chart.html">Biểu đồ</a>
+        <a href="history.html">Lịch sử</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="main">
+    <header>
+      <h1>Dashboard Tổng Quan</h1>
+    </header>
+
+    <!-- Node 1 -->
+    <h2>Node 1: Môi trường</h2>
+    <div class="cards">
+      <div class="card">
+        <p>Khí độc (ppm)</p>
+        <h2 id="gasNode1">--</h2>
+      </div>
+      <div class="card">
+        <p>Rung chấn (PGA)</p>
+        <h2 id="pgaNode1">--</h2>
+      </div>
+      <div class="card buzzer-control">
+        <h3>Còi cảnh báo</h3>
+        <div class="status">
+          Trạng thái: <span id="buzzer-status-node1" class="off">Đang TẮT</span>
+        </div>
+        <div class="buttons">
+          <button id="btn-on-node1">BẬT</button>
+          <button id="btn-off-node1">TẮT</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 2 -->
+    <h2 style="margin-top: 40px;">Node 2: An toàn</h2>
+    <div class="cards">
+      <div class="card">
+        <p>Nhiệt độ (°C)</p>
+        <h2 id="tempNode2">--</h2>
+      </div>
+      <div class="card">
+        <p>Độ ẩm (%)</p>
+        <h2 id="humidNode2">--</h2>
+      </div>
+      <div class="card buzzer-control">
+        <h3>Còi cảnh báo</h3>
+        <div class="status">
+          Trạng thái: <span id="buzzer-status-node2" class="off">Đang TẮT</span>
+        </div>
+        <div class="buttons">
+          <button id="btn-on-node2">BẬT</button>
+          <button id="btn-off-node2">TẮT</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 40px;">Thiết lập ngưỡng cảnh báo</h2>
+    <div class="thresholds">
+      <div class="threshold-card">
+        <label for="tempThreshold">Nhiệt độ (°C)</label>
+        <input type="number" id="tempThreshold" placeholder="Nhập ngưỡng..." onkeydown="handleThresholdInput(event, 'temp')" />
+      </div>
+      <div class="threshold-card">
+        <label for="humidThreshold">Độ ẩm (%)</label>
+        <input type="number" id="humidThreshold" placeholder="Nhập ngưỡng..." onkeydown="handleThresholdInput(event, 'humid')" />
+      </div>
+      <div class="threshold-card">
+        <label for="gasThreshold">Khí độc (ppm)</label>
+        <input type="number" id="gasThreshold" placeholder="Nhập ngưỡng..." onkeydown="handleThresholdInput(event, 'gas')" />
+      </div>
+      <div class="threshold-card">
+        <label for="pgaThreshold">Rung chấn (PGA)</label>
+        <input type="number" id="pgaThreshold" placeholder="Nhập ngưỡng..." onkeydown="handleThresholdInput(event, 'pga')" />
+      </div>
+    </div>
+    <div class="note">
+      Dữ liệu đang được cập nhật từ Firebase. Mọi giá trị thay đổi theo thời gian thực.
+    </div>
+  </div>
+
+  <!-- Firebase config và Script JS -->
+  <script src="firebase-config.js"></script>
+  <script src="script_index.js"></script>
+    <script src="script_history.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lịch sử - Node Giám Sát</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <h2>Giám sát</h2>
+      <nav>
+        <a href="index.html">Trang chính</a>
+        <a href="chart.html">Biểu đồ</a>
+        <a href="history.html" class="active">Lịch sử</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="main">
+    <header>
+      <h1>Lịch sử Dữ Liệu</h1>
+    </header>
+
+    <h2>Node 1: Môi trường</h2>
+    <div class="table-container" id="node1">
+      <table>
+        <thead>
+          <tr>
+            <th>Thời gian</th>
+            <th>Nhiệt độ (°C)</th>
+            <th>Độ ẩm (%)</th>
+            <th>Còi cảnh báo 1</th>
+            <th>
+              <button onclick="toggleNode('node1')">Hiện/Ẩn Dữ Liệu</button> <!-- Nút Hiện/Ẩn cho Node 1 -->
+            </th>
+          </tr>
+        </thead>
+        <tbody id="historyNode1">
+          <!-- Dữ liệu sẽ được thêm vào đây -->
+        </tbody>
+      </table>
+      <!-- <button onclick="confirmDelete('node1')" class="toggle-btn">Xóa Lịch Sử Node 1</button> -->
+    </div>
+    
+    <h2>Node 2: An toàn</h2>
+    <div class="table-container" id="node2">
+      <table>
+        <thead>
+          <tr>
+            <th>Thời gian</th>
+            <th>Khí độc (ppm)</th>
+            <th>Rung chấn (PGA)</th>
+            <th>Còi cảnh báo 2</th>
+            <th>
+              <button onclick="toggleNode('node2')">Hiện/Ẩn Dữ Liệu</button> <!-- Nút Hiện/Ẩn cho Node 2 -->
+            </th>
+          </tr>
+        </thead>
+        <tbody id="historyNode2">
+          <!-- Dữ liệu sẽ được thêm vào đây -->
+        </tbody>
+      </table>
+      <!-- <button onclick="confirmDelete('node2')" class="toggle-btn">Xóa Lịch Sử Node 2</button> -->
+    </div>
+    
+    <div class="note">
+      Lịch sử dữ liệu từ Firebase.
+    </div>
+  </div>
+
+  <!-- Thêm tham chiếu đến script.js -->
+  <script src="firebase-config.js"></script>
+  <script src="script_history.js"></script>
+  
+  
+</body>
+
+
+
+</html>
